@@ -5,7 +5,7 @@ Tags: gutenberg,markdown,jetpack
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A markdown block for the Gutenberg editor.
+A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
 
 == Description ==
 
