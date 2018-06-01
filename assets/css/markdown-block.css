@@ -1,0 +1,9 @@
+textarea.editor-plain-text.wp-block-mdblock-markdown-block {
+	font-family: monospace;
+	font-size: 14px;
+	color: #23282d;
+	padding: .8em 1.6em;
+	border: 1px solid #e2e4e7;
+	background-color: #FCFCFC;
+	border-radius: 4px;
+}
