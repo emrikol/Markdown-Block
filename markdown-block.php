@@ -3,13 +3,15 @@
  * Plugin Name: Markdown Block
  * Plugin URI: https://github.com/emrikol/Markdown-Block
  * Description: A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Derrick Tennant
  * Author URI: https://github.com/emrikol/Markdown-Block
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: https://github.com/emrikol/markdown-block/
  * Text Domain: markdown-block
+ *
+ * @package WordPress
  */
 
 // If this file is called directly, abort.

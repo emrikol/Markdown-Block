@@ -1,13 +1,42 @@
 <?php
+/**
+ * Name: Markdown Block
+ * Plugin URI: https://github.com/emrikol/Markdown-Block
+ * Description: A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
+ * Version: 0.1.1
+ * Author: Derrick Tennant
+ * Author URI: https://github.com/emrikol/Markdown-Block
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * GitHub Plugin URI: https://github.com/emrikol/markdown-block/
+ * Text Domain: markdown-block
+ *
+ * @package WordPress
+ */
 
+/**
+ * Main Class for the Markdown Block
+ */
 class Markdown_Block {
 
+	/**
+	 * Registers the markdown-block Block Type.
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public static function register_block_types() {
 		register_block_type(
 			'mdblock/markdown-block'
 		);
 	}
 
+	/**
+	 * Enqueues Block JS and CSS assets.
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public static function enqueue_block_editor_assets() {
 		wp_enqueue_script(
 			'markdown-block',
@@ -21,6 +50,13 @@ class Markdown_Block {
 		);
 	}
 
+	/**
+	 * Filters the post content to Markdown-ify the block contents.
+	 *
+	 * @param string $content The post content.
+	 * @access public
+	 * @return string
+	 */
 	public static function filter_the_content( $content ) {
 		// Just in case Jetpack isn't working for some reason.
 		if ( ! class_exists( 'WPCom_Markdown' ) ) {

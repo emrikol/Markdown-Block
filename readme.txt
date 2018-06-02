@@ -21,6 +21,12 @@ Install like any other plugin, directly from your plugins page or manually by co
 
 == Changelog ==
 
+= 0.1.1 =
+
+* Fixed slashing problem
+* Some PHPCBF Whitespace Fixes
+* PHPCS Documentation Additions
+
 = 0.1.0 =
 
 First version, basically a proof of concept.
