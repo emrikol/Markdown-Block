@@ -11,7 +11,7 @@ A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Mar
 
 This is a Markdown block for the new WordPress Gutenberg editor.
 
-It\'s basically a ripoff of most of this PR to Jetpack: https://github.com/Automattic/jetpack/pull/9357
+It's basically a ripoff of most of this PR to Jetpack: https://github.com/Automattic/jetpack/pull/9357
 
 Enjoy :)
 
