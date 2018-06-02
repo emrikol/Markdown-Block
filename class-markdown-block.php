@@ -34,7 +34,7 @@ class Markdown_Block {
 				// Swap out the <pre> for a <div>.
 				// In testing, we need the <pre> in the admin for proper whitespace saving.
 				$matches['mdstart'] = '<div class="wp-block-mdblock-markdown-block">';
-				$matches['mdtext']  = $wpcom_markdown->transform( $matches['mdtext'] );
+				$matches['mdtext']  = $wpcom_markdown->transform( $matches['mdtext'], array( 'unslash' => false ) );
 				$matches['mdstop']  = '</div>';
 
 				// Let's just reset all of these for posterity.
