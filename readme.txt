@@ -21,6 +21,10 @@ Install like any other plugin, directly from your plugins page or manually by co
 
 == Changelog ==
 
+= 0.1.2 =
+
+* Added absolute path include for main plugin file.
+
 = 0.1.1 =
 
 * Fixed slashing problem
