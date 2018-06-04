@@ -3,7 +3,7 @@
  * Name: Markdown Block
  * Plugin URI: https://github.com/emrikol/Markdown-Block
  * Description: A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: Derrick Tennant
  * Author URI: https://github.com/emrikol/Markdown-Block
  * License: GPL-2.0+
@@ -70,7 +70,7 @@ class Markdown_Block {
 				// Swap out the <pre> for a <div>.
 				// In testing, we need the <pre> in the admin for proper whitespace saving.
 				$matches['mdstart'] = '<div class="wp-block-mdblock-markdown-block">';
-				$matches['mdtext']  = $wpcom_markdown->transform( $matches['mdtext'], array( 'unslash' => false ) );
+				$matches['mdtext']  = wpautop( $wpcom_markdown->transform( $matches['mdtext'], array( 'unslash' => false ) ) );
 				$matches['mdstop']  = '</div>';
 
 				// Let's just reset all of these for posterity.
