@@ -21,6 +21,10 @@ Install like any other plugin, directly from your plugins page or manually by co
 
 == Changelog ==
 
+= 1.1 =
+
+* Added WordPress.com compatability.
+
 = 1.0 =
 
 * BREAKING CHANGES: Now rendered server-side.  Old Markdown content will show as markdown in the post.
@@ -29,8 +33,6 @@ Install like any other plugin, directly from your plugins page or manually by co
 = 0.1.3 =
 
 * Fixed formatting issue by adding a `wpautop()`
-
-== Changelog ==
 
 = 0.1.2 =
 
