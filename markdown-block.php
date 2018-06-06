@@ -3,7 +3,7 @@
  * Plugin Name: Markdown Block
  * Plugin URI: https://github.com/emrikol/Markdown-Block
  * Description: A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
- * Version: 0.1.3
+ * Version: 1.0
  * Author: Derrick Tennant
  * Author URI: https://github.com/emrikol/Markdown-Block
  * License: GPL-2.0+
@@ -27,6 +27,3 @@ if ( class_exists( 'WPCom_Markdown' ) ) {
 
 add_action( 'init', array( 'Markdown_Block', 'register_block_types' ) );
 add_action( 'enqueue_block_editor_assets', array( 'Markdown_Block', 'enqueue_block_editor_assets' ) );
-
-add_filter( 'the_content', array( 'Markdown_Block', 'filter_the_content' ), 10, 1 );
-
