@@ -21,6 +21,11 @@ Install like any other plugin, directly from your plugins page or manually by co
 
 == Changelog ==
 
+= 1.0 =
+
+* BREAKING CHANGES: Now rendered server-side.  Old Markdown content will show as markdown in the post.
+* Blocks now preview HTML when not in focus.
+
 = 0.1.3 =
 
 * Fixed formatting issue by adding a `wpautop()`

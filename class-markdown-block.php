@@ -3,7 +3,7 @@
  * Name: Markdown Block
  * Plugin URI: https://github.com/emrikol/Markdown-Block
  * Description: A markdown block for the Gutenberg editor.  Requires Jetpack and the Jetpack Markdown module enabled.
- * Version: 0.1.3
+ * Version: 1.0
  * Author: Derrick Tennant
  * Author URI: https://github.com/emrikol/Markdown-Block
  * License: GPL-2.0+
@@ -27,7 +27,10 @@ class Markdown_Block {
 	 */
 	public static function register_block_types() {
 		register_block_type(
-			'mdblock/markdown-block'
+			'mdblock/markdown-block', array(
+				'render_callback' => array( 'Markdown_Block', 'render_markdown' ),
+				'attributes' => array( 'content' => array( 'type' => 'string' ) ),
+			)
 		);
 	}
 
@@ -57,32 +60,11 @@ class Markdown_Block {
 	 * @access public
 	 * @return string
 	 */
-	public static function filter_the_content( $content ) {
-		// Just in case Jetpack isn't working for some reason.
-		if ( ! class_exists( 'WPCom_Markdown' ) ) {
-			return $content;
-		}
+	public static function render_markdown( $attributes ) {
+		$wpcom_markdown = WPCom_Markdown::get_instance();
 
-		$content = preg_replace_callback(
-			'|(?P<mdstart><pre class="wp-block-mdblock-markdown-block">)(?P<mdtext>.*)(?P<mdstop></pre>)|Uims',
-			function( $matches ) {
-				$wpcom_markdown = WPCom_Markdown::get_instance();
-				// Swap out the <pre> for a <div>.
-				// In testing, we need the <pre> in the admin for proper whitespace saving.
-				$matches['mdstart'] = '<div class="wp-block-mdblock-markdown-block">';
-				$matches['mdtext']  = wpautop( $wpcom_markdown->transform( $matches['mdtext'], array( 'unslash' => false ) ) );
-				$matches['mdstop']  = '</div>';
-
-				// Let's just reset all of these for posterity.
-				$matches[0] = $matches['mdstart'] . $matches['mdtext'] . $matches['mdstop'];
-				$matches[1] = $matches['mdstart'];
-				$matches[2] = $matches['mdtext'];
-				$matches[3] = $matches['mdstop'];
-				return $matches[0];
-			},
-			$content
-		);
-		return $content;
+		$mdown = $wpcom_markdown->transform( $attributes['content'], array( 'unslash' => false ) );
+		return '<div class="wp-block-mdblock-markdown-block">' . wpautop( $mdown ) . '</div>';
 	}
 
 }
