@@ -41,38 +41,45 @@ wp.blocks.registerBlockType(
 				className     = props.className,
 				isSelected    = props.isSelected;
 
-			if ( isSelected ) {
-				return [ el(
-					wp.editor.BlockControls,
-					{ key: 'controls' },
+			var mdblock_editor = [ el(
+				wp.editor.BlockControls,
+				{ key: 'controls' },
+				el(
+					'div',
+					{ className: 'components-toolbar' },
 					el(
-						'div',
-						{ className: 'components-toolbar' },
+						'button',
+						{ className: 'components-tab-button is-active' },
 						el(
-							'button',
-							{ className: 'components-tab-button is-active' },
-							el(
-								'span',
-								null,
-								'Markdown'
-							)
+							'span',
+							null,
+							'Markdown'
 						)
 					)
-				), el( wp.editor.PlainText, {
-					className: className,
-					value: attributes.content,
-					onChange: function onChange(content) {
-						return setAttributes( { content: content } );
-					},
-					'aria-label': __( 'Markdown' )
-				} ) ];
+				)
+			), el( wp.editor.PlainText, {
+				className: className,
+				value: attributes.content,
+				onChange: function onChange(content) {
+					return setAttributes( { content: content } );
+				},
+				'aria-label': __( 'Markdown' )
+			} ) ];
+
+			if ( isSelected ) {
+				return mdblock_editor;
 			} else {
-				return [
-					el( wp.components.ServerSideRender, {
-						block: 'mdblock/markdown-block',
-						attributes: props.attributes
-					} )
-				];
+				if ( typeof wpcom.actionbar != 'undefined' ) {
+					// Gutenberg on WordPress.com is still kind-of broken.
+					return mdblock_editor;
+				} else {
+					return [
+						el( wp.components.ServerSideRender, {
+							block: 'mdblock/markdown-block',
+							attributes: props.attributes
+						} )
+					];
+				}
 			}
 		},
 
